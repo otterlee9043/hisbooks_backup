@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="border-radius: 2em;"> 
+    <table >
+        <tbody>
+            <tr>
+                <td>제목:</td>
+                <td><input type="text" value="" class="txtfield" style="width: 10cm; margin-bottom: 15px; background-color: #f0f0f0c9;"></td>
+                </td>
+                </div>
+            </tr> <tr style="margin-bottom: 5cm;">
+                
+            <tr>
+                <td class="txtarea">내용:</td>
+                <td><textarea style="width: 10cm; height: 10cm;"></textarea></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="complain_button">    
+    <div style="text-align: center; display: inline-block;">
+        <button type="submit" nClick="location.href='index.html'">등록</button>
+    </div>
+    <div style="text-align: center; display: inline-block;">
+        <button type="submit" nClick="location.href='index.html'">취소</button>
+    </div>
+</div>
+<script language="javascript">
+    function showPopup() { window.open("layer.html", "a", "width=400, height=300, left=100, top=50"); }
+</script>
+{% endblock %}

@@ -1,0 +1,100 @@
+
+{% extends 'base.html' %}
+{% load display_image %}
+{% block content %}
+    <div class="bottom">
+        <div class="wrapper">
+            <div class="wrapper_bar">
+                <div>중고 거래 게시판</div>
+            </div>
+            <div class="wrapper_box">
+                <form class="search_class" action="submit" method="get">
+                    <div class="left">
+                        <input type="text" id="book_title" name="book_title" placeholder="책 제목을 입력 하세요">
+                        <button class="search_book" href="#">검색</button>
+                    </div>
+                </form>
+                <div class="right"> 
+                    <a class="" href="{% url 'upload' %}">등록</a>
+                </div>
+                {% for post in book_list %}
+                <div class="content-box">
+                    <div class="key_info">
+                        <div class="left">
+                            <div class="sold">
+                                {% if post.5 == 1 %}[판매완료]{% endif %}
+                                {% if post.5 == 0 %}[판매중]{% endif %}
+                            </div>
+                            <div class="condition"> 상태: 
+                                {% if post.2 == 1 %} 상 {% endif %}
+                                {% if post.2 == 2 %} 중 {% endif %}
+                                {% if post.2 == 3 %} 하 {% endif %}
+                                
+                            </div>
+                            <div class="price">가격: {{post.1}}</div>
+                        </div>
+                        <div class="right dropdown">
+                            <a onclick="myFunction()" class="dropbtn">{{post.7}}</a>
+                            <div id="myDropdown" class="dropdown-content">
+                                <a href="#">총 complain 갯수: {{post.8}}</a>
+                                <a href="{% url 'complain' %}">Complain</a>
+                            </div>
+                        </div>
+                        <div class="right">{{post.6}}</div>
+                    </div><hr>
+                    <image width="200px" src ="data:image;base64,{{ post.3 | display_img }}">
+                    <div class="description">{{post.4}}</div><hr>
+                    <div class="comment_bar " >
+                        <a class ="toggle_btn">댓글 보기
+                            <div class="comments" style="display: hidden;">
+                                <form method='POST' action="{% url 'create_comment' post.9 %}" class="comment_input">
+                                    {% csrf_token %}
+                                    <textarea name = "comment"style="width: 90%; height: 50px; margin-right: 20px;"></textarea>
+                                    <button type="submit" >등록</button>
+                                </form><hr>
+                                <!-- <div class="comment_info">
+                                    <div class="left">user_id</div>
+                                    <div class="right">2021.03.03</div>
+                                </div>
+                                <div class="comment_content">
+                                    사고 싶어요!
+                                </div> -->
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* When the user clicks on the button, 
+        toggle between hiding and showing the dropdown content */
+        function myFunction() {
+          document.getElementById("myDropdown").classList.toggle("show");
+        }
+        
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function(event) {
+          if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+              var openDropdown = dropdowns[i];
+              if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+              }
+            }
+          }
+        }
+
+        $(document).ready(function(){
+            $('.toggle_btn').click(function(){
+                $('.comments').attr('style', 'display:block;');
+            });
+        });
+    </script>
+        
+
+{% endblock %}

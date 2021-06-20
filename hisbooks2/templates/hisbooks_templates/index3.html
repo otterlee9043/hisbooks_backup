@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<body>
+    <div class="bottom">
+        <div class="wrapper">
+            <div class="wrapper_bar">
+                <div>수업 교재 검색</div>
+            </div>
+            <div >
+                <form class="search_class">
+                    <!-- <label for="username">Username:</label><br> -->
+                    <input type="text" id="code" name="code" placeholder="과목코드"><br>
+                    <!-- <label for="pwd">Password:</label><br> -->
+                    <input type="text" id="section" name="section" placeholder="분반">
+                    <button class="search_book" href="#">검색</button>
+                    <button class="" href="#">등록</button>
+                </form>
+            </div>
+            <div class="box">
+                <div class="content_bar">
+                    <div>2021-1</div>
+                </div>
+                <div class="textbook_content">
+                    <div class="book">
+                        <img class="book_img" width="200" src=./book1.jfif>
+                        <div class="book_content">
+                            <div class="title">Database System Concepts 7th edition</div><br>
+                            <div class="publisher">McGraw-Hill Education</div><br>
+                            <div class="author">Abraham Silberschatz </div><br>
+                            <div class="usage">안 씀</div>
+                        </div>
+                    </div>
+                    <div class="book">
+                        <img class="book_img" width="200" src=./book1.jfif>
+                        <div class="book_content">
+                            <div class="title">Database System Concepts 7th edition</div><br>
+                            <div class="publisher">McGraw-Hill Education</div><br>
+                            <div class="author">Abraham Silberschatz </div><br>
+                            <div class="usage">안 씀</div>
+                        </div>
+                    </div>
+                    <div class="book">
+                        <img class="book_img" width="200" src=./book1.jfif>
+                        <div class="book_content">
+                            <div class="title">Database System Concepts 7th edition</div><br>
+                            <div class="publisher">McGraw-Hill Education</div><br>
+                            <div class="author">Abraham Silberschatz </div><br>
+                            <div class="usage">안 씀</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="box">
+                <div class="content_bar">
+                    <div>2020-1</div>
+                </div>
+                <div class="textbook_content">
+                    <img class="book_img" width="200" src=./old_book.jpg>
+                    <div class="book_content">
+                        <div class="title">Database System Concepts 6th edition</div><br>
+                        <div class="publisher">McGraw-Hill Education</div><br>
+                        <div class="author">Abraham Silberschatz </div><br>
+                        <div class="usage">안 씀</div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+
+    <script>
+
+    </script>
+
+</body>
+{% endblock %}

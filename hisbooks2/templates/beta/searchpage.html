@@ -1,0 +1,49 @@
+{% block title %}Home{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+  Hi {{ user.username }}!
+
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Search</button>
+  </form>
+
+  {% if title %}
+  <div> {{ title }}</div>
+  {% endif %}
+
+  {% if author %}
+  <div> {{ author }}</div>
+  {% endif %}
+
+  {% if searchfound %}
+  <div>
+    {% for book in booklist.0 %}
+    <tr>
+        {for book_info in book}
+        <td>{{ book.0 }}</td>
+        <td>{{ book.1 }}</td>
+        <td>{{ book.2 }}</td>
+        <td>{{ book.3 }}</td>
+        <td>{{ book.4 }}</td>
+        <td>{{ book.5 }}</td>
+        <td>{{ book.6 }}</td>
+        <td>{{ book.7 }}</td>
+        {%  %}
+       
+    </tr>
+    {% endfor %}
+  </div>
+
+  <div> list found </div>
+  {% else %}
+    <div> No such book found in Handong Library</div>
+    {% endif %}
+
+{% else %}
+  <p>You are not logged in</p>
+  <a href="{% url 'login' %}">Log In</a>
+{% endif %}
+{% endblock %}

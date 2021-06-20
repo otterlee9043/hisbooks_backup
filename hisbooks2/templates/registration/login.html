@@ -1,0 +1,89 @@
+{% load static %}
+
+<head>
+  <link rel="stylesheet" href="{% static 'hisbooks2/style.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Sign in</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Nanum+Myeongjo&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+</style>
+
+</head>
+
+<body>
+  <div style= "position: relative;">
+    <div style=
+    
+    "        
+
+    margin-top: 50;
+    position: absolute;
+    top: 20%;
+    left: 40%;
+    width: fit-content; 
+    background-color:'white';     
+    display: flex;
+    justify-content: center;
+    
+    "
+    >
+      <div>
+        <div>
+          <div>Sign in</div></div>
+      <div >
+        <form method="post">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button type="submit">Sign In</button>
+          <button onclick="location.href = '/users/signup'">Sign Up</button>
+
+        </form>
+          
+      </div>
+    
+    
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- <div class="bottom" style= "position: relative;">
+    <div style=
+    
+    "
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: fit-content; 
+    background-color:'white';     
+    display: flex;
+    justify-content: center;"
+    >
+      <div class="box" >
+        <div class="content_bar">
+          <div>Sign in</div></div>
+      <div class="content">
+        <form method="post">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button type="submit">Sign In</button>
+          <button onclick="location.href = '/users/signup'">Sign Up</button>
+
+        </form>
+          
+      </div>
+    
+    
+
+        </div>
+      </div>
+
+    </div>
+  </div> -->
+
+
+    
+</body>

@@ -1,0 +1,58 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" {IF CLASSES}class="classes" {/IF}>
+
+<head>
+    <link rel="stylesheet" href="{% static 'hisbooks2/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <!-- MIT License -->
+
+    <title>Hisbooks</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Nanum+Myeongjo&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+    </style>
+
+</head>
+
+<body>
+    <div class="top_nav">
+        <div class="top_nav_wrap">
+            <div class="top_nav_inner">
+                <div class="top_nav__left">
+                    <div class="top_nav__logo">
+                        <a href="/search">
+                            <img src="{% static 'hisbooks2/images/logo2.png' %}" style="width: 250px;">
+                        </a>
+                    </div>
+                    <div class="top_nav_btn_wrap">
+                        <a href="/courses" class="f1 top_nav__links w-inline-block">
+                            <div>수업 교재 검색</div>
+                        </a>
+                        <a href="/usedbook" class="f2 top_nav__links w-inline-block">
+                            <div>중고 거래 게시판</div>
+                        </a>
+                        <div class="search">
+                            <form action="submit" method="get" action="{% url 'searchpage' %}">
+                                <input type="text" name="title" placeholder="책 제목을 입력하세요" class="search__input">
+                                <button href="#" class="search__button"><i class="fa fa-search "></i></button>
+                            </form>
+        
+                        </div>
+                    </div>
+                    <a id="login-btn" href="{% url 'logout' %}" class="nav_signup cc-secondary w-inline-block">로그아웃
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% block content %}
+    {% endblock %}
+</body>
+
+</html>
