@@ -1,20 +1,17 @@
 from django.shortcuts import render, redirect
 from .forms import RegisterForm
-
+from django.db import connection
 # Create your views here.
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
 
 
-# def signup(request):
-#     user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
-#     # At this point, user is a User object that has already been saved
-#     # to the database. You can continue to change its attributes
-#     # if you want to change other fields.
-#     user.last_name = 'Lennon'
-#     user.save()
 
+def signup_trigger(username):
+    cursor = connection.cursor()
+    user_trigger_qry = """INSERT INTO User_Info(user_id) VALUES ('"""+username+"""'); """
+    cursor.execute(user_trigger_qry)
 
 
 # Create your views here.
@@ -23,6 +20,12 @@ def signup(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             form.save()
+            new_user = authenticate(username=form.cleaned_data['username'],
+                            password=form.cleaned_data['password1']
+                            )
+            login(request, new_user)
+            username = request.user.username
+            signup_trigger(username)
             return redirect("/search")
         else:
             print("The form was not valid")

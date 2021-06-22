@@ -18,9 +18,9 @@ button, input, optgroup, select, textarea {
 
   .bottom{
       width: 100%;
-      height: 100%;
-      padding: 20px 0 20px 0;
-      text-align: center;
+      height: auto;
+      padding: 20px 0 20px 0; 
+
   }
 
   .wrapper{
@@ -29,7 +29,6 @@ button, input, optgroup, select, textarea {
       width: 1000px;
       height: 100%;
       background-color: white;
-      box-shadow: 5px 10px 8px #adadad;
       text-align: left;
   } 
 
@@ -127,14 +126,21 @@ button, input, optgroup, select, textarea {
     float: left;
     width: auto;
   }
-  .condition, .price, .sold{
+  .condition, .price, .sold, .not_sold{
     margin-right: 10px;
     display: inline;
   }
 
   .sold{
     font-weight: bold;
+    color: rgb(122, 5, 133);
   }
+
+  .not_sold{
+    font-weight: bold;
+  }
+
+
 
   .right{
     display: inline;
@@ -327,11 +333,11 @@ width: 100%;
 
 
 .search {
-box-shadow: 0 20px 10px -10px rgba(200, 200, 200, .5);
+/* box-shadow: 0 20px 10px -10px rgba(200, 200, 200, .5); */
 display: flex;
 height:50px;
 margin-left:30px;
-}
+} 
 
 .search__input {
 border: 0;
@@ -382,7 +388,7 @@ transition: box-shadow .3s ease-out;
   line-height: 40px;
   width: 0px;
 }
-.btn {
+/* .btn {
   border-radius: 50%;
   background: #2f3640;
   color: #2471A3;
@@ -392,7 +398,7 @@ transition: box-shadow .3s ease-out;
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
 
 .w-input {
   display: block;
@@ -452,33 +458,33 @@ input.w-button {
 }
 
 .dropbtn {
-  background-color: none;
-  color: black;
+  background-color: #4CAF50;
+  color: white;
   padding: 16px;
   font-size: 16px;
   border: none;
   cursor: pointer;
+  float: right;
+  
 }
 
-.dropbtn:hover, .dropbtn:focus {
-  background-color: #2980B9;
-}
-
+/* The container <div> - needed to position the dropdown content */
 .dropdown {
   position: relative;
   display: inline-block;
 }
 
+/* Dropdown Content (Hidden by Default) */
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f1f1f1;
+  background-color: #f9f9f9;
   min-width: 160px;
-  overflow: auto;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
 
+/* Links inside the dropdown */
 .dropdown-content a {
   color: black;
   padding: 12px 16px;
@@ -486,7 +492,19 @@ input.w-button {
   display: block;
 }
 
-.dropdown a:hover {background-color: #ddd;}
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
+
 
 .show {display: block;}
 
@@ -524,4 +542,26 @@ input.w-button {
 
 .comment_input{
   display: flex;
+}
+
+.ub_form{
+  padding: 20px;
+
+}
+
+tr {
+  margin: 10px;
+}
+
+select {
+  margin: 10px;
+}
+
+.post_content {
+  padding: 20px;
+  float: left;
+}
+
+.description{
+  margin: 20px;
 }

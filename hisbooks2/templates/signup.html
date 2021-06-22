@@ -25,7 +25,13 @@
         <div>
             <form method="POST">
                 {% csrf_token %}
-                {{ form.as_p }}
+                {% for field in form %}
+                <div class="fieldWrapper" style="margin-bottom: 30;">
+                    {{ field.errors }}
+                    {{ field.label_tag }}: {{ field }}
+                </div>
+                {% endfor %}
+                <button type="submit" >Register</button>
             </form>
             
                 <button onclick="location.href = '/accounts/login'">Sign in</button>    

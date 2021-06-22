@@ -6,6 +6,7 @@
 <head>
     <link rel="stylesheet" href="{% static 'hisbooks2/style.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,7 +21,7 @@
 
 </head>
 
-<body>
+<body style="background-color: rgb(168, 191, 221);">
     <div class="top_nav">
         <div class="top_nav_wrap">
             <div class="top_nav_inner">
@@ -38,11 +39,14 @@
                             <div>중고 거래 게시판</div>
                         </a>
                         <div class="search">
-                            <form action="submit" method="get" action="{% url 'searchpage' %}">
+                            <!-- <form action="submit" method="get" action="{% url 'searchpage' %}">
                                 <input type="text" name="title" placeholder="책 제목을 입력하세요" class="search__input">
                                 <button href="#" class="search__button"><i class="fa fa-search "></i></button>
+                            </form> -->
+                            <form class="form-inline">
+                                <input class="form-control mr-sm-2" style="width: 300px;"type="search" placeholder="Search" aria-label="Search">
+                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                             </form>
-        
                         </div>
                     </div>
                     <a id="login-btn" href="{% url 'logout' %}" class="nav_signup cc-secondary w-inline-block">로그아웃

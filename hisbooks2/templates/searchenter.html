@@ -1,81 +1,93 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form method='POST' action='..' enctype="multipart/form-data">
-    {% csrf_token %}
-    <div style="border-radius: 2em;">
-        <table>
-            <tbody>
-                <tr>
-                    <td>책 제목22:</td>
-                    <td><input name="bookTitle" type="text" value="" class="txtfield"
-                            style="width: 10cm; margin-bottom: 15px; background-color: #f0f0f0c9;"></td>
-                    <td>
-                        <a input type="submit" value="검색" class="btn"
-                            style="background-color:lightgray; margin-bottom: 10px; border-radius: 10px; width: 2cm;"
-                            href="bookpopup.html"
-                            onclick="window.open('bookpopup.html', '_blank', 'width=800, height=600'); return false;">
-                            검색
-                        </a>
-                    </td>
-    </div>
-    </tr>
-    <tr style="margin-bottom: 5cm;">
-        <td>저자:</td>
-        <td><input type="text" value="" class="txtfield" style="width: 10cm; margin-bottom: 15px;" disabled></td>
-    </tr>
-    <tr>
-        <td>출판사:</td>
-        <td><input type="text" value="" class="txtfield" style="width: 10cm; margin-bottom: 15px;" disabled></td>
-    </tr>
-    <tr>
-        <td>가격:</td>
-        <td><input type="text" name="price" value="" class="txtfield" style="width: 10cm; margin-bottom: 15px;" ></td>
-    </tr>
-    <tr>
-        <td>수업:</td>
-        <td><input name="course" type="text" value="" class="txtfield"
-                style="width: 10cm; margin-bottom: 15px; background-color: #f0f0f0c9 ;"></td>
-        <td><a input type="submit" value="검색" class="btn"
-                style="background-color:lightgray; margin-bottom: 10px; border-radius: 10px; width: 2cm;"
-                href="bookpopup.html"
-                onclick="window.open('bookpopup.html', '_blank', 'width=800, height=600'); return false;">
-                검색
-            </a></td>
-    </tr>
-    <tr>
-        <td>상태:</td>
-        <td style="font-size: 20px;">
-            <select id="Quality" name="quality" style="width: 5cm;">
-                <option value="1">상</option>
-                <option value="2">중</option>
-                <option value="3">하</option>
-            </select>
-        </td>
-    </tr>
-    </tr>
-    <tr>
-        <td>겉표지 사진:</td>
-        <td><input type="file" name="frontImg" id="frontImageFileOpenInput" accept="image/png, image/jpeg"></td>
-    </tr>
-    <!-- <tr>
-        <td>내부 사진:</td>
-        <td><input type="file" name="insideImg" id="imageImageFileOpenInput" accept="image/png, image/jpeg"></td>
-    </tr> -->
-    <tr>
-        <td class="txtarea">내용:</td>
-        <td><textarea name = "description"style="width: 10cm; height: 10cm;"></textarea></td>
-    </tr>
-    </tbody>
-    </table>
-    </div>
-    <div class="button">
-        <div style="text-align: center; display: inline-block;">
-            <button type="submit">등록</button>
-        </div>
-        <div style="text-align: center; display: inline-block;">
-            <button type="submit" onClick="location.href='index.html'">취소</button>
-        </div>
-    </div>
-</form>
+<div class='ub_form'>
+<div class='card' style="width: 700px; margin: 0 auto;">
+<div class="card-header">
+    게시글 등록
+</div>
+<div class='card-body' style="margin: 0 auto;">
+    <form method='POST' action='..' enctype="multipart/form-data">
+        {% csrf_token %}
+        <div style="border-radius: 2em;">
+            <table style="width: 550px;margin: 0 auto; ">
+                <tbody style="margin: 20px;">
+                    {% if request.session.course_error == 1 %}<div>존재하지 않는 수업입니다. 다시 입력해주세요.</div> {% endif %}
+                    <tr>
+                        <td>책 제목:</td>
+                        <td><input name="bookTitle" type="text" value="" class="txtfield"
+                                style="width: 10cm; margin-bottom: 15px; margin-top: 30px; "></td>
+                    </tr>
+                    <tr style="margin-bottom: 5cm;">
+                        <td>저자:</td>
+                        <td><input type="text" name="author" value="" class="txtfield" style="width: 10cm; margin-bottom: 15px;" ></td>
+                    </tr>
+                    <tr>
+                        <td>출판사:</td>
+                        <td><input type="text" name="publisher "value="" class="txtfield" style="width: 10cm; margin-bottom: 15px;" ></td>
+                    </tr>
+                    <tr>
+                        <td>가격:</td>
+                        <td><input type="text" name="price" value="" class="txtfield" style="width: 10cm; margin-bottom: 15px;" ></td>
+                    </tr>
+                    <tr>
+                        <td>수업:</td>
+                        <td>
+                            <input name="course" type="text" value=""  placeholder="과목 코드"
+                                style="width: 4.9cm; margin-bottom: 15px; ">
+                            <input name="section" type="text" value=""  placeholder="분반"
+                                style="width: 4.9cm; margin-bottom: 15px; ">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>상태:</td>
+                        <td >
+                            <select id="Quality" name="quality" style="width: 5cm; margin: 5px 0 10px 0;">
+                                <option value="1">상</option>
+                                <option value="2">중</option>
+                                <option value="3">하</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>사용년도:</td>
+                        <td>
+                            <select name="year" style="width: 5cm; margin: 5px 0 10px 0;">
+                                <option value="21">2021</option>
+                                <option value="20">2020</option>
+                                <option value="19">2019</option>
+                            </select>
+                            <select name="semester" style="width: 5cm; margin: 5px 0 10px 0;">
+                                <option value="01">1</option>
+                                <option value="02">2</option>
+                            </select>
+                        </td>
+                    </tr>
+                    </tr>
+                    <tr>
+                        <td>겉표지 사진:</td>
+                        <td><input type="file" name="frontImg" id="frontImageFileOpenInput" accept="image/png, image/jpeg" style ="margin: 5px 0 10px 0;"></td>
+                    </tr>
+                    <!-- <tr>
+                        <td>내부 사진:</td>
+                        <td><input type="file" name="insideImg" id="imageImageFileOpenInput" accept="image/png, image/jpeg"></td>
+                    </tr> -->
+                    <tr>
+                        <td class="txtarea">내용:</td>
+                        <td><textarea name = "description"  placeholder="판매자의 핸드폰 번호 혹은 카카오톡 아이디를 꼭!꼭!꼭! 입력해주세요:)" style="width: 10cm; height: 10cm;"></textarea></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div >
+            <div style="display: table; margin-left: auto; margin-right: auto; ">
+                <button style="margin: 10px;" class ="btn btn-dark" type="submit">등록</button>
+
+                <button style="margin: 10px;"  class="btn btn-dark" type="submit" onClick="location.href='index.html'">취소</button>
+            </div>
+        </form>
+    </form>
+</div>
+</div>
+</div>
 {% endblock %}
